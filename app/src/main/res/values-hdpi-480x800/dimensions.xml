@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="logo_width">125dp</dimen>
+    <dimen name="logo_height">125dp</dimen>
+    <dimen name="logo_font_size">80sp</dimen>
+    <dimen name="logo_margin_top">54dp</dimen>
+    <dimen name="logo_margin_bottom">8dp</dimen>
+
+    <dimen name="font_size_xl">19sp</dimen>
+    <dimen name="font_size_l_header">17sp</dimen>
+    <dimen name="font_size_medium">15sp</dimen>
+    <dimen name="font_size_normal">13sp</dimen>
+    <dimen name="font_size_small">11sp</dimen>
+    <dimen name="conf_btn_width">125dp</dimen>
+    <dimen name="conf_btn_height">45dp</dimen>
+
+    <dimen name="fab_marginH">6dp</dimen>
+    <dimen name="btn_main_width">200dp</dimen>
+    <dimen name="btn_main_height">40dp</dimen>
+    <dimen name="btn_main_margin_bottom">0dp</dimen>
+
+    <dimen name="params_btn_width">55dp</dimen>
+    <dimen name="params_btn_height">55dp</dimen>
+    <dimen name="params_btn_textSize">24sp</dimen>
+    <dimen name="params_btn_marginHorizontal">4dp</dimen>
+    <dimen name="params_linear_height">60dp</dimen>
+    <dimen name="params_linear_bottomMargin">4dp</dimen>
+
+    <dimen name="action_btn_height">45dp</dimen>
+    <dimen name="action_btn_width">45dp</dimen>
+    <dimen name="action_btn_extended_width">120dp</dimen>
+    <dimen name="action_btn_marginVertical">3.2dp</dimen>
+
+    <dimen name="fab_size">32dp</dimen>
+    <dimen name="fab_btn_menu_dim">28dp</dimen>
+    <dimen name="fab_btn_width">26dp</dimen>
+    <dimen name="fab_btn_height">26dp</dimen>
+    <dimen name="fab_img_size">18dp</dimen>
+    <dimen name="fab_btn_size">32dp</dimen>
+
+    <dimen name="vp_small_width">135dp</dimen>
+    <dimen name="vp_small_height">30dp</dimen>
+    <dimen name="vp_small_padding_top">12dp</dimen>
+    <dimen name="vp_small_font_size">14sp</dimen>
+
+
+    <dimen name="tv_game_header_size">16sp</dimen>
+
+    <dimen name="settings_item_subtitle_max_width">225dp</dimen>
+    <dimen name="settings_item_padding">10dp</dimen>
+
+</resources>

@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    tools:context=".MainActivity">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/content_theme_menu" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="@dimen/logo_width"
+        android:layout_height="@dimen/logo_height"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/logo_margin_top"
+        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ImageView_icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="false"
+            android:elevation="0dp"
+            android:src="@drawable/ic_main_icon"
+            app:tint="@color/blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/textView_icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="#"
+            android:textAlignment="center"
+            android:textSize="@dimen/logo_font_size"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_sudokuGrid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+       android:layout_marginTop="@dimen/logo_margin_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_prev_sudoku_grid"
+            android:layout_width="@dimen/fab_btn_width"
+            android:layout_height="@dimen/fab_btn_width"
+            android:src="@drawable/ic_back_ico"
+            android:scaleType="centerCrop"
+            app:fabCustomSize="@dimen/fab_size"
+            app:maxImageSize="@dimen/fab_img_size"
+            app:backgroundTint="@color/transparent"
+            app:borderWidth="0dp"
+            app:elevation="0dp"
+            app:rippleColor="@color/transparent"
+            android:outlineProvider="none"
+            />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager_sudoku_grid"
+            android:layout_width="@dimen/vp_small_width"
+            android:layout_height="@dimen/vp_small_height"
+            android:layout_marginHorizontal="10dp"
+            android:overScrollMode="never" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_next_sudoku_grid"
+            android:layout_width="@dimen/fab_btn_width"
+            android:layout_height="@dimen/fab_btn_width"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_next_ico"
+            app:fabCustomSize="@dimen/fab_size"
+            app:maxImageSize="@dimen/fab_img_size"
+            app:backgroundTint="@color/transparent"
+            app:borderWidth="0dp"
+            app:elevation="0dp"
+            app:rippleColor="@color/transparent"
+            android:outlineProvider="none"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/vp_small_padding_top"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout_sudokuGrid">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_prev_game_mode"
+            android:layout_width="@dimen/fab_btn_width"
+            android:layout_height="@dimen/fab_btn_height"
+            android:scaleType="centerCrop"
+            app:backgroundTint="@color/transparent"
+            android:src="@drawable/ic_back_ico"
+            app:fabCustomSize="@dimen/fab_size"
+            app:maxImageSize="@dimen/fab_img_size"
+            app:borderWidth="0dp"
+            app:fabSize="auto"
+            app:elevation="0dp"/>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager_game_mode"
+            android:layout_width="@dimen/vp_small_width"
+            android:layout_height="@dimen/vp_small_height"
+            android:overScrollMode="never"
+            android:layout_marginHorizontal="10dp"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_next_game_mode"
+            android:layout_width="@dimen/fab_btn_width"
+            android:layout_height="@dimen/fab_btn_height"
+            android:scaleType="centerCrop"
+            app:backgroundTint="@color/transparent"
+            android:src="@drawable/ic_next_ico"
+            app:fabCustomSize="@dimen/fab_size"
+            app:maxImageSize="@dimen/fab_img_size"
+            app:borderWidth="0dp"
+            app:elevation="0dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_sudoku"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/vp_small_padding_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_prev_sudoku_mode"
+            android:layout_width="@dimen/fab_btn_width"
+            android:layout_height="@dimen/fab_btn_height"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_back_ico"
+            app:backgroundTint="@color/transparent"
+            app:borderWidth="0dp"
+            app:elevation="0dp"
+            app:fabCustomSize="@dimen/fab_size"
+            app:maxImageSize="@dimen/fab_img_size"
+            app:fabSize="auto"/>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager_sudoku_mode"
+            android:layout_width="@dimen/vp_small_width"
+            android:layout_height="@dimen/vp_small_height"
+            android:layout_marginHorizontal="10dp"
+            android:overScrollMode="never"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_next_sudoku_mode"
+            android:layout_width="@dimen/fab_btn_width"
+            android:layout_height="@dimen/fab_btn_height"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_next_ico"
+            app:backgroundTint="@color/transparent"
+            app:borderWidth="0dp"
+            app:elevation="0dp"
+            app:fabCustomSize="@dimen/fab_size"
+            app:maxImageSize="@dimen/fab_img_size"
+            app:fabSize="auto"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/menu_buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="bottom"
+        android:layout_marginBottom="@dimen/btn_main_margin_bottom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout_sudoku"
+        app:layout_constraintBottom_toTopOf="@+id/footer_layout">
+        <FrameLayout
+            android:id="@+id/frame_new_game"
+            android:layout_width="@dimen/btn_main_width"
+            android:layout_height="@dimen/btn_main_height"
+            android:background="@drawable/ic_frame_background"
+            android:backgroundTint="@color/transparent">
+            <Button
+                android:id="@+id/btn_new_game"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="New Game"
+                android:textSize="@dimen/font_size_small"
+                android:background="@drawable/ic_button_background"
+                app:backgroundTint="@null"
+                android:textColor="@color/blue"
+                />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/frame_resume_game"
+            android:layout_width="@dimen/btn_main_width"
+            android:layout_height="@dimen/btn_main_height"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/ic_frame_background"
+            android:backgroundTint="@color/transparent">
+            <Button
+                android:id="@+id/btn_resume_game"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/font_size_small"
+                android:text="Resume Game"
+                android:background="@drawable/ic_button_background"
+                app:backgroundTint="@null"
+                android:textColor="@color/blue"
+                />
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/footer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_margin="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="1">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_settings"
+            android:layout_width="@dimen/fab_btn_size"
+            android:layout_height="@dimen/fab_btn_size"
+            android:layout_marginHorizontal="@dimen/fab_marginH"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_settings_ico"
+            app:backgroundTint="@color/transparent"
+            app:elevation="0dp"
+            app:fabCustomSize="@dimen/fab_btn_size"
+            app:borderWidth="0dp"
+            app:fabSize="auto" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_shop"
+            android:layout_width="@dimen/fab_btn_size"
+            android:layout_height="@dimen/fab_btn_size"
+            android:layout_marginHorizontal="@dimen/fab_marginH"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_shop_ico"
+            app:backgroundTint="@color/transparent"
+            app:elevation="0dp"
+            app:fabCustomSize="@dimen/fab_btn_size"
+            app:borderWidth="0dp"
+            app:fabSize="auto" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_statistics"
+            android:layout_width="@dimen/fab_btn_size"
+            android:layout_height="@dimen/fab_btn_size"
+            android:scaleType="centerInside"
+            android:layout_marginHorizontal="@dimen/fab_marginH"
+            android:src="@drawable/ic_list_ico"
+            app:backgroundTint="@color/transparent"
+            app:elevation="0dp"
+            app:fabCustomSize="@dimen/fab_btn_size"
+            app:borderWidth="0dp"
+            app:fabSize="auto" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_info"
+            android:layout_width="@dimen/fab_btn_size"
+            android:layout_height="@dimen/fab_btn_size"
+            android:scaleType="centerInside"
+            android:layout_marginHorizontal="@dimen/fab_marginH"
+            android:src="@drawable/ic_info_ico"
+            app:backgroundTint="@color/transparent"
+            app:elevation="0dp"
+            app:fabCustomSize="@dimen/fab_btn_size"
+            app:borderWidth="0dp"
+            app:fabSize="auto" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_daynight"
+            android:layout_width="@dimen/fab_btn_size"
+            android:layout_height="@dimen/fab_btn_size"
+            android:scaleType="centerInside"
+            android:layout_marginHorizontal="@dimen/fab_marginH"
+            android:src="@drawable/ic_icon_night"
+            app:backgroundTint="@color/transparent"
+            app:elevation="0dp"
+            app:fabCustomSize="@dimen/fab_btn_size"
+            app:borderWidth="0dp"
+            app:fabSize="auto" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:visibility="visible"
+        android:id="@+id/fade_in_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"></RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

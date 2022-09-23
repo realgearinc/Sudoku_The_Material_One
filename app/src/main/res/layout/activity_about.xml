@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.About">
+
+    <LinearLayout
+        android:id="@+id/header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/back_btn"
+            android:layout_width="@dimen/fab_btn_width"
+            android:layout_height="@dimen/fab_btn_height"
+            android:layout_marginStart="4dp"
+            android:clickable="true"
+            app:backgroundTint="@color/white"
+            app:borderWidth="0dp"
+            app:elevation="0dp"
+            app:fabCustomSize="@dimen/fab_size"
+            app:fabSize="auto"
+            app:maxImageSize="30dp"
+            app:srcCompat="@drawable/ic_back_ico" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="About"
+            android:textSize="@dimen/font_size_l_header"
+            android:textStyle="bold"
+            />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_layout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:orientation="vertical"
+            android:overScrollMode="always"
+            android:padding="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="INTRO"
+                android:textAllCaps="true"
+                android:textSize="@dimen/font_size_xl"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="Welcome to Sudoku The Material One ! \n\nTo Solve the Standard Sudoku you can solve it by filling in all the numbers and letters(1 - 9, A - P) so that each digit/letter does not repeat itself in the same row,column or block, It's as simple as that, To Solve the Samurai Sudoku you have to think of all the boards as one huge board"
+                android:textSize="@dimen/font_size_normal"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="How to play ?"
+                android:textAllCaps="true"
+                android:textSize="@dimen/font_size_xl"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="By default you can start bly clicking on blank cells the digit will keep increasing itself. \nLOCK DIGIT : You can also click the numbers below the grid to highlight and add / replace it to the blank squares \nHINTS : It's a useful feature that will show all the candidates in the square. \nUNDO : All of your moves can be undo."
+                android:textSize="@dimen/font_size_normal"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="REPORT BUGS OR SUGGEST ?"
+                android:textAllCaps="true"
+                android:textSize="@dimen/font_size_xl"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="If you experiencing any bugs or have any suggestions, you're welcome to email us \nSupport Email : cacxmiles@gmail.com"
+                android:textSize="@dimen/font_size_normal"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="SUPPORT ?"
+                android:textAllCaps="true"
+                android:textSize="@dimen/font_size_xl"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="We'll appreciate your support alot and it will help us with improvements and bug fixes !"
+                android:textSize="@dimen/font_size_normal"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="ABOUT"
+                android:textAllCaps="true"
+                android:textSize="@dimen/font_size_xl"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="Sudoku - The Material One v1.7.5 \nCopyright © 2021 Real Gear Inc. All rights reserved."
+                android:textSize="@dimen/font_size_normal"></TextView>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

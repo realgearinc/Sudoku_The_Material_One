@@ -1,0 +1,1695 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.Gameplay">
+
+    <LinearLayout
+        android:id="@+id/header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/back_btn"
+            android:layout_width="@dimen/fab_btn_width"
+            android:layout_height="@dimen/fab_btn_height"
+            android:scaleType="fitCenter"
+            android:clickable="true"
+            app:backgroundTint="@color/transparent"
+            app:borderWidth="0dp"
+            app:elevation="0dp"
+            app:fabCustomSize="@dimen/fab_size"
+            app:fabSize="auto"
+            app:srcCompat="@drawable/ic_back_ico" />
+
+        <TextView
+            android:id="@+id/textView_level_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="Level : 5 - Hard"
+            android:textSize="@dimen/font_size_l_header"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/time_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="8M 35S"
+            android:textSize="@dimen/font_size_l_header"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <include
+        layout="@layout/content_theme_menu"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.otaliastudios.zoom.ZoomLayout
+        android:id="@+id/sudokuBoard_ZoomLayout"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_margin="4dp"
+        app:alignment="center"
+        app:animationDuration="280"
+        app:flingEnabled="true"
+        app:hasClickableChildren="true"
+        app:horizontalPanEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_layout"
+        app:maxZoom="6"
+        app:maxZoomType="zoom"
+        app:minZoom="1"
+        app:minZoomType="zoom"
+        app:overPinchable="true"
+        app:overScrollHorizontal="true"
+        app:overScrollVertical="true"
+        app:scrollEnabled="true"
+        app:transformation="centerInside"
+        app:transformationGravity="center"
+        app:twoFingersScrollEnabled="true"
+        app:zoomEnabled="true">
+
+        <androidx.gridlayout.widget.GridLayout
+            android:id="@+id/sudokuBoard_GridLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/table_grid"
+            app:useDefaultMargins="false">
+
+        </androidx.gridlayout.widget.GridLayout>
+
+    </com.otaliastudios.zoom.ZoomLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_params"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sudokuBoard_ZoomLayout">
+
+        <ScrollView
+            android:layout_width="@dimen/action_btn_width"
+            android:layout_marginHorizontal="4dp"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:overScrollMode="never"
+            >
+
+        <LinearLayout
+            android:id="@+id/layout_params_action"
+            android:layout_width="@dimen/action_btn_width"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical">
+
+                <FrameLayout
+                    android:id="@+id/frame_btn_undo"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/action_btn_height"
+                    android:layout_marginVertical="@dimen/action_btn_marginVertical"
+                    android:background="@drawable/ic_frame_background_gameplay"
+                    android:backgroundTint="@color/transparent">
+
+                    <Button
+                        android:id="@+id/btn_undo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text=""
+                        android:textColor="@color/blue"
+                        android:background="@drawable/ic_button_background_gameplay"
+                        />
+
+                    <ImageView
+                        android:id="@+id/btn_undo_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_icon_undo"
+                        app:tint="@color/purple_700"
+                        android:layout_gravity="center"/>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/frame_btn_erase"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/action_btn_height"
+                    android:layout_marginVertical="@dimen/action_btn_marginVertical"
+                    android:background="@drawable/ic_frame_background_gameplay"
+                    android:backgroundTint="@color/transparent">
+
+                    <Button
+                        android:id="@+id/btn_erase"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text=""
+                        android:textColor="@color/blue"
+                        android:background="@drawable/ic_button_background_gameplay"
+                        />
+
+                    <ImageView
+                        android:id="@+id/btn_erase_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_icon_remove"
+                        app:tint="@color/purple_700"
+                        android:layout_gravity="center"/>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/frame_btn_restart"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/action_btn_height"
+                    android:layout_marginVertical="@dimen/action_btn_marginVertical"
+                    android:background="@drawable/ic_frame_background_gameplay"
+                    android:backgroundTint="@color/transparent">
+
+                    <Button
+                        android:id="@+id/btn_restart"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text=""
+                        android:textColor="@color/blue"
+                        android:background="@drawable/ic_button_background_gameplay"
+                        />
+
+                    <ImageView
+                        android:id="@+id/btn_restart_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_icon_restart"
+                        app:tint="@color/purple_700"
+                        android:layout_gravity="center"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/frame_btn_hints"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/action_btn_height"
+                    android:layout_marginVertical="@dimen/action_btn_marginVertical"
+                    android:background="@drawable/ic_frame_background_gameplay"
+                    android:backgroundTint="@color/transparent">
+
+                    <Button
+                        android:id="@+id/btn_hints"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text=""
+                        android:textColor="@color/blue"
+                        android:background="@drawable/ic_button_background_gameplay"
+                        />
+
+                    <ImageView
+                        android:id="@+id/btn_hints_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_icon_hints"
+                        app:tint="@color/purple_700"
+                        android:layout_gravity="center"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/frame_btn_check"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/action_btn_height"
+                    android:layout_marginVertical="@dimen/action_btn_marginVertical"
+                    android:background="@drawable/ic_frame_background_gameplay"
+                    android:backgroundTint="@color/transparent">
+
+                    <Button
+                        android:id="@+id/btn_check"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text=""
+                        android:textColor="@color/blue"
+                        android:background="@drawable/ic_button_background_gameplay"
+                        />
+
+                    <ImageView
+                        android:id="@+id/btn_check_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_icon_check"
+                        app:tint="@color/purple_700"
+                        android:layout_gravity="center"/>
+                </FrameLayout>
+
+        </LinearLayout>
+
+        </ScrollView>
+
+        <com.otaliastudios.zoom.ZoomLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:alignment="center"
+            android:layout_gravity="center"
+            app:animationDuration="280"
+            app:flingEnabled="false"
+            app:hasClickableChildren="true"
+            app:horizontalPanEnabled="false"
+            app:zoomEnabled="false"
+            app:maxZoom="1"
+            app:maxZoomType="zoom"
+            app:minZoom="1"
+            app:minZoomType="zoom"
+            app:overPinchable="false"
+            app:overScrollHorizontal="false"
+            app:overScrollVertical="false"
+            app:scrollEnabled="false"
+            app:transformation="centerInside"
+            app:transformationGravity="center"
+            app:twoFingersScrollEnabled="false"
+            >
+            <LinearLayout
+                android:id="@+id/params_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="fill">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="@dimen/params_linear_bottomMargin"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+                    <FrameLayout
+                        android:id="@+id/frame_1"
+                        android:background="@drawable/ic_circle_custom"
+                        android:backgroundTint="@color/transparent"
+                        android:backgroundTintMode="add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/params_btn_marginHorizontal">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/btn_number_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:paddingStart="0dp"
+                            android:paddingEnd="0dp"
+                            android:outlineAmbientShadowColor="@color/white"
+                            android:outlineSpotShadowColor="@color/white"
+                            android:gravity="center"
+                            android:textAlignment="center"
+                            android:elevation="0dp"
+                            android:layout_gravity="center"
+                            android:defaultFocusHighlightEnabled="false"
+                            android:focusable="false"
+                            android:clipToOutline="true"
+                            android:contextClickable="false"
+                            app:borderWidth="1dp"
+                            android:backgroundTint="@color/transparent"
+                            app:backgroundTint="@color/mat_indian_red"
+                            app:elevation="0dp"
+                            tools:ignore="UnusedAttribute" />
+
+                        <TextView
+                            android:id="@+id/btn_number_1_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:text="1"
+                            android:textSize="@dimen/params_btn_textSize"
+                            android:textStyle="bold"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/btn_number_1_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:text="9"
+                            android:layout_marginTop="18dp" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/frame_2"
+                        android:background="@drawable/ic_circle_custom"
+                        android:backgroundTint="@color/transparent"
+                        android:backgroundTintMode="add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/params_btn_marginHorizontal">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/btn_number_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:paddingStart="0dp"
+                            android:paddingEnd="0dp"
+                            android:outlineAmbientShadowColor="@color/white"
+                            android:outlineSpotShadowColor="@color/white"
+                            android:backgroundTint="@color/transparent"
+                            app:backgroundTint="@color/mat_indian_red"
+                            android:gravity="center_horizontal"
+                            android:elevation="0dp"
+                            app:borderWidth="1dp"
+                            android:layout_gravity="center"
+                            app:elevation="0dp"
+                            tools:ignore="UnusedAttribute" />
+
+                        <TextView
+                            android:id="@+id/btn_number_2_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:text="2"
+                            android:textSize="@dimen/params_btn_textSize"
+                            android:textStyle="bold"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/btn_number_2_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:text="5"
+                            android:layout_marginTop="18dp" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/frame_3"
+                        android:background="@drawable/ic_circle_custom"
+                        android:backgroundTint="@color/transparent"
+                        android:backgroundTintMode="add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/params_btn_marginHorizontal">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/btn_number_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:paddingStart="0dp"
+                            android:paddingEnd="0dp"
+                            android:outlineAmbientShadowColor="@color/white"
+                            android:outlineSpotShadowColor="@color/white"
+                            android:backgroundTint="@color/transparent"
+                            app:backgroundTint="@color/mat_indian_red"
+                            android:gravity="center_horizontal"
+                            android:elevation="0dp"
+                            app:borderWidth="1dp"
+                            android:layout_gravity="center"
+                            app:elevation="0dp"
+                            tools:ignore="UnusedAttribute" />
+
+                        <TextView
+                            android:id="@+id/btn_number_3_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:text="3"
+                            android:textSize="@dimen/params_btn_textSize"
+                            android:textStyle="bold"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/btn_number_3_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:text="9"
+                            android:layout_marginTop="18dp" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/frame_4"
+                        android:background="@drawable/ic_circle_custom"
+                        android:backgroundTint="@color/transparent"
+                        android:backgroundTintMode="add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/params_btn_marginHorizontal">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/btn_number_4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:paddingStart="0dp"
+                            android:paddingEnd="0dp"
+                            android:outlineAmbientShadowColor="@color/white"
+                            android:outlineSpotShadowColor="@color/white"
+                            android:backgroundTint="@color/transparent"
+                            app:backgroundTint="@color/mat_indian_red"
+                            android:gravity="center_horizontal"
+                            android:elevation="0dp"
+                            app:borderWidth="1dp"
+                            android:layout_gravity="center"
+                            app:elevation="0dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/btn_number_4_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:text="4"
+                            android:textSize="@dimen/params_btn_textSize"
+                            android:textStyle="bold"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/btn_number_4_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:text="9"
+                            android:layout_marginTop="18dp" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/frame_5"
+                        android:background="@drawable/ic_circle_custom"
+                        android:backgroundTint="@color/transparent"
+                        android:backgroundTintMode="add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/params_btn_marginHorizontal">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/btn_number_5"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:paddingStart="0dp"
+                            android:paddingEnd="0dp"
+                            android:outlineAmbientShadowColor="@color/white"
+                            android:outlineSpotShadowColor="@color/white"
+                            android:backgroundTint="@color/transparent"
+                            app:backgroundTint="@color/mat_indian_red"
+                            android:gravity="center_horizontal"
+                            android:elevation="0dp"
+                            app:borderWidth="1dp"
+                            android:layout_gravity="center"
+                            app:elevation="0dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/btn_number_5_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:text="5"
+                            android:textSize="@dimen/params_btn_textSize"
+                            android:textStyle="bold"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/btn_number_5_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:text="9"
+                            android:layout_marginTop="18dp" />
+                    </FrameLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="@dimen/params_linear_bottomMargin"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+                    <FrameLayout
+                        android:id="@+id/frame_6"
+                        android:background="@drawable/ic_circle_custom"
+                        android:backgroundTint="@color/transparent"
+                        android:backgroundTintMode="add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/params_btn_marginHorizontal">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/btn_number_6"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:paddingStart="0dp"
+                            android:paddingEnd="0dp"
+                            android:outlineAmbientShadowColor="@color/white"
+                            android:outlineSpotShadowColor="@color/white"
+                            android:backgroundTint="@color/transparent"
+                            app:backgroundTint="@color/mat_indian_red"
+                            android:gravity="center_horizontal"
+                            android:elevation="0dp"
+                            app:borderWidth="1dp"
+                            android:layout_gravity="center"
+                            app:elevation="0dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/btn_number_6_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:text="6"
+                            android:textSize="@dimen/params_btn_textSize"
+                            android:textStyle="bold"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/btn_number_6_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:text="9"
+                            android:layout_marginTop="18dp" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/frame_7"
+                        android:background="@drawable/ic_circle_custom"
+                        android:backgroundTint="@color/transparent"
+                        android:backgroundTintMode="add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/params_btn_marginHorizontal">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/btn_number_7"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:paddingStart="0dp"
+                            android:paddingEnd="0dp"
+                            android:outlineAmbientShadowColor="@color/white"
+                            android:outlineSpotShadowColor="@color/white"
+                            android:backgroundTint="@color/transparent"
+                            app:backgroundTint="@color/mat_indian_red"
+                            android:gravity="center_horizontal"
+                            android:elevation="0dp"
+                            app:borderWidth="1dp"
+                            android:layout_gravity="center"
+                            app:elevation="0dp"
+                            tools:ignore="UnusedAttribute" />
+
+                        <TextView
+                            android:id="@+id/btn_number_7_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:text="7"
+                            android:textSize="@dimen/params_btn_textSize"
+                            android:textStyle="bold"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/btn_number_7_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:text="9"
+                            android:layout_marginTop="18dp" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/frame_8"
+                        android:background="@drawable/ic_circle_custom"
+                        android:backgroundTint="@color/transparent"
+                        android:backgroundTintMode="add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/params_btn_marginHorizontal">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/btn_number_8"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:paddingStart="0dp"
+                            android:paddingEnd="0dp"
+                            android:outlineAmbientShadowColor="@color/white"
+                            android:outlineSpotShadowColor="@color/white"
+                            android:backgroundTint="@color/transparent"
+                            app:backgroundTint="@color/mat_indian_red"
+                            android:gravity="center_horizontal"
+                            android:elevation="0dp"
+                            app:borderWidth="1dp"
+                            android:layout_gravity="center"
+                            app:elevation="0dp"
+                            tools:ignore="UnusedAttribute" />
+
+                        <TextView
+                            android:id="@+id/btn_number_8_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:text="8"
+                            android:textSize="@dimen/params_btn_textSize"
+                            android:textStyle="bold"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/btn_number_8_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:text="9"
+                            android:layout_marginTop="18dp" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/frame_9"
+                        android:background="@drawable/ic_circle_custom"
+                        android:backgroundTint="@color/transparent"
+                        android:backgroundTintMode="add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/params_btn_marginHorizontal">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/btn_number_9"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:paddingStart="0dp"
+                            android:paddingEnd="0dp"
+                            android:outlineAmbientShadowColor="@color/white"
+                            android:outlineSpotShadowColor="@color/white"
+                            android:backgroundTint="@color/transparent"
+                            app:backgroundTint="@color/mat_indian_red"
+                            android:gravity="center_horizontal"
+                            android:elevation="0dp"
+                            app:borderWidth="1dp"
+                            android:layout_gravity="center"
+                            app:elevation="0dp"
+                            tools:targetApi="p" />
+
+                        <TextView
+                            android:id="@+id/btn_number_9_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:text="9"
+                            android:textSize="@dimen/params_btn_textSize"
+                            android:textStyle="bold"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/btn_number_9_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:text="9"
+                            android:layout_marginTop="18dp" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/frame_10"
+                        android:background="@drawable/ic_circle_custom"
+                        android:backgroundTint="@color/transparent"
+                        android:backgroundTintMode="add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/params_btn_marginHorizontal">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/btn_number_10"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:paddingStart="0dp"
+                            android:paddingEnd="0dp"
+                            android:outlineAmbientShadowColor="@color/white"
+                            android:outlineSpotShadowColor="@color/white"
+                            android:backgroundTint="@color/transparent"
+                            app:backgroundTint="@color/mat_indian_red"
+                            android:gravity="center_horizontal"
+                            android:elevation="0dp"
+                            app:borderWidth="1dp"
+                            android:layout_gravity="center"
+                            app:elevation="0dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/btn_number_10_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:text="A"
+                            android:textSize="@dimen/params_btn_textSize"
+                            android:textStyle="bold"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/btn_number_10_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:text="9"
+                            android:layout_marginTop="18dp" />
+                    </FrameLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="@dimen/params_linear_bottomMargin"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+                    <FrameLayout
+                        android:id="@+id/frame_11"
+                        android:background="@drawable/ic_circle_custom"
+                        android:backgroundTint="@color/transparent"
+                        android:backgroundTintMode="add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/params_btn_marginHorizontal">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/btn_number_11"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:paddingStart="0dp"
+                            android:paddingEnd="0dp"
+                            android:outlineAmbientShadowColor="@color/white"
+                            android:outlineSpotShadowColor="@color/white"
+                            android:backgroundTint="@color/transparent"
+                            app:backgroundTint="@color/mat_indian_red"
+                            android:gravity="center_horizontal"
+                            android:elevation="0dp"
+                            app:borderWidth="1dp"
+                            android:layout_gravity="center"
+                            app:elevation="0dp"
+                            tools:ignore="UnusedAttribute" />
+
+                        <TextView
+                            android:id="@+id/btn_number_11_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:text="B"
+                            android:textSize="@dimen/params_btn_textSize"
+                            android:textStyle="bold"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/btn_number_11_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:text="9"
+                            android:layout_marginTop="18dp" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/frame_12"
+                        android:background="@drawable/ic_circle_custom"
+                        android:backgroundTint="@color/transparent"
+                        android:backgroundTintMode="add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/params_btn_marginHorizontal">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/btn_number_12"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:paddingStart="0dp"
+                            android:paddingEnd="0dp"
+                            android:outlineAmbientShadowColor="@color/white"
+                            android:outlineSpotShadowColor="@color/white"
+                            android:backgroundTint="@color/transparent"
+                            app:backgroundTint="@color/mat_indian_red"
+                            android:gravity="center_horizontal"
+                            android:elevation="0dp"
+                            app:borderWidth="1dp"
+                            android:layout_gravity="center"
+                            app:elevation="0dp"
+                            tools:ignore="UnusedAttribute" />
+
+                        <TextView
+                            android:id="@+id/btn_number_12_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:text="C"
+                            android:textSize="@dimen/params_btn_textSize"
+                            android:textStyle="bold"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/btn_number_12_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:text="9"
+                            android:layout_marginTop="18dp" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/frame_13"
+                        android:background="@drawable/ic_circle_custom"
+                        android:backgroundTint="@color/transparent"
+                        android:backgroundTintMode="add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/params_btn_marginHorizontal">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/btn_number_13"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:paddingStart="0dp"
+                            android:paddingEnd="0dp"
+                            android:outlineAmbientShadowColor="@color/white"
+                            android:outlineSpotShadowColor="@color/white"
+                            android:backgroundTint="@color/transparent"
+                            app:backgroundTint="@color/mat_indian_red"
+                            android:gravity="center_horizontal"
+                            android:elevation="0dp"
+                            app:borderWidth="1dp"
+                            android:layout_gravity="center"
+                            app:elevation="0dp"
+                            tools:ignore="UnusedAttribute" />
+
+                        <TextView
+                            android:id="@+id/btn_number_13_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:text="D"
+                            android:textSize="@dimen/params_btn_textSize"
+                            android:textStyle="bold"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/btn_number_13_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:text="9"
+                            android:layout_marginTop="18dp" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/frame_14"
+                        android:background="@drawable/ic_circle_custom"
+                        android:backgroundTint="@color/transparent"
+                        android:backgroundTintMode="add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/params_btn_marginHorizontal">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/btn_number_14"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:paddingStart="0dp"
+                            android:paddingEnd="0dp"
+                            android:outlineAmbientShadowColor="@color/white"
+                            android:outlineSpotShadowColor="@color/white"
+                            android:backgroundTint="@color/transparent"
+                            app:backgroundTint="@color/mat_indian_red"
+                            android:gravity="center_horizontal"
+                            android:elevation="0dp"
+                            app:borderWidth="1dp"
+                            android:layout_gravity="center"
+                            app:elevation="0dp"
+                            tools:ignore="UnusedAttribute" />
+
+                        <TextView
+                            android:id="@+id/btn_number_14_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:text="E"
+                            android:textSize="@dimen/params_btn_textSize"
+                            android:textStyle="bold"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/btn_number_14_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:text="9"
+                            android:layout_marginTop="18dp" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/frame_15"
+                        android:background="@drawable/ic_circle_custom"
+                        android:backgroundTint="@color/transparent"
+                        android:backgroundTintMode="add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/params_btn_marginHorizontal">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/btn_number_15"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:paddingStart="0dp"
+                            android:paddingEnd="0dp"
+                            android:outlineAmbientShadowColor="@color/white"
+                            android:outlineSpotShadowColor="@color/white"
+                            android:backgroundTint="@color/transparent"
+                            app:backgroundTint="@color/mat_indian_red"
+                            android:gravity="center_horizontal"
+                            android:elevation="0dp"
+                            app:borderWidth="1dp"
+                            android:layout_gravity="center"
+                            app:elevation="0dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/btn_number_15_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:text="F"
+                            android:textSize="@dimen/params_btn_textSize"
+                            android:textStyle="bold"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/btn_number_15_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:text="9"
+                            android:layout_marginTop="18dp" />
+                    </FrameLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="@dimen/params_linear_bottomMargin"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+                    <FrameLayout
+                        android:id="@+id/frame_16"
+                        android:background="@drawable/ic_circle_custom"
+                        android:backgroundTint="@color/transparent"
+                        android:backgroundTintMode="add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/params_btn_marginHorizontal">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/btn_number_16"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:paddingStart="0dp"
+                            android:paddingEnd="0dp"
+                            android:outlineAmbientShadowColor="@color/white"
+                            android:outlineSpotShadowColor="@color/white"
+                            android:backgroundTint="@color/transparent"
+                            app:backgroundTint="@color/mat_indian_red"
+                            android:gravity="center_horizontal"
+                            android:elevation="0dp"
+                            app:borderWidth="1dp"
+                            android:layout_gravity="center"
+                            app:elevation="0dp"
+                            tools:ignore="UnusedAttribute" />
+
+                        <TextView
+                            android:id="@+id/btn_number_16_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:text="G"
+                            android:textSize="@dimen/params_btn_textSize"
+                            android:textStyle="bold"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/btn_number_16_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:text="9"
+                            android:layout_marginTop="18dp" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/frame_17"
+                        android:background="@drawable/ic_circle_custom"
+                        android:backgroundTint="@color/transparent"
+                        android:backgroundTintMode="add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/params_btn_marginHorizontal">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/btn_number_17"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:paddingStart="0dp"
+                            android:paddingEnd="0dp"
+                            android:outlineAmbientShadowColor="@color/white"
+                            android:outlineSpotShadowColor="@color/white"
+                            android:backgroundTint="@color/transparent"
+                            app:backgroundTint="@color/mat_indian_red"
+                            android:gravity="center_horizontal"
+                            android:elevation="0dp"
+                            app:borderWidth="1dp"
+                            android:layout_gravity="center"
+                            app:elevation="0dp"
+                            tools:ignore="UnusedAttribute" />
+
+                        <TextView
+                            android:id="@+id/btn_number_17_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:text="J"
+                            android:textSize="@dimen/params_btn_textSize"
+                            android:textStyle="bold"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/btn_number_17_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:text="9"
+                            android:layout_marginTop="18dp" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/frame_18"
+                        android:background="@drawable/ic_circle_custom"
+                        android:backgroundTint="@color/transparent"
+                        android:backgroundTintMode="add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/params_btn_marginHorizontal">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/btn_number_18"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:paddingStart="0dp"
+                            android:paddingEnd="0dp"
+                            android:outlineAmbientShadowColor="@color/white"
+                            android:outlineSpotShadowColor="@color/white"
+                            android:backgroundTint="@color/transparent"
+                            app:backgroundTint="@color/mat_indian_red"
+                            android:gravity="center_horizontal"
+                            android:elevation="0dp"
+                            app:borderWidth="1dp"
+                            android:layout_gravity="center"
+                            app:elevation="0dp"
+                            tools:ignore="UnusedAttribute" />
+
+                        <TextView
+                            android:id="@+id/btn_number_18_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:text="FF"
+                            android:textSize="@dimen/params_btn_textSize"
+                            android:textStyle="bold"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/btn_number_18_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:text="9"
+                            android:layout_marginTop="18dp" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/frame_19"
+                        android:background="@drawable/ic_circle_custom"
+                        android:backgroundTint="@color/transparent"
+                        android:backgroundTintMode="add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/params_btn_marginHorizontal">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/btn_number_19"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:paddingStart="0dp"
+                            android:paddingEnd="0dp"
+                            android:outlineAmbientShadowColor="@color/white"
+                            android:outlineSpotShadowColor="@color/white"
+                            android:backgroundTint="@color/transparent"
+                            app:backgroundTint="@color/mat_indian_red"
+                            android:gravity="center_horizontal"
+                            android:elevation="0dp"
+                            app:borderWidth="1dp"
+                            android:layout_gravity="center"
+                            app:elevation="0dp"
+                            tools:ignore="UnusedAttribute" />
+
+                        <TextView
+                            android:id="@+id/btn_number_19_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:text="G"
+                            android:textSize="@dimen/params_btn_textSize"
+                            android:textStyle="bold"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/btn_number_19_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:text="9"
+                            android:layout_marginTop="18dp" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/frame_20"
+                        android:background="@drawable/ic_circle_custom"
+                        android:backgroundTint="@color/transparent"
+                        android:backgroundTintMode="add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/params_btn_marginHorizontal">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/btn_number_20"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:paddingStart="0dp"
+                            android:paddingEnd="0dp"
+                            android:outlineAmbientShadowColor="@color/white"
+                            android:outlineSpotShadowColor="@color/white"
+                            android:backgroundTint="@color/transparent"
+                            app:backgroundTint="@color/mat_indian_red"
+                            android:gravity="center_horizontal"
+                            android:elevation="0dp"
+                            app:borderWidth="1dp"
+                            android:layout_gravity="center"
+                            app:elevation="0dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/btn_number_20_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:text="5"
+                            android:textSize="@dimen/params_btn_textSize"
+                            android:textStyle="bold"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/btn_number_20_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:text="9"
+                            android:layout_marginTop="18dp" />
+                    </FrameLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+                    <FrameLayout
+                        android:id="@+id/frame_21"
+                        android:background="@drawable/ic_circle_custom"
+                        android:backgroundTint="@color/transparent"
+                        android:backgroundTintMode="add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/params_btn_marginHorizontal">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/btn_number_21"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:paddingStart="0dp"
+                            android:paddingEnd="0dp"
+                            android:outlineAmbientShadowColor="@color/white"
+                            android:outlineSpotShadowColor="@color/white"
+                            android:backgroundTint="@color/transparent"
+                            app:backgroundTint="@color/mat_indian_red"
+                            android:gravity="center_horizontal"
+                            android:elevation="0dp"
+                            app:borderWidth="1dp"
+                            android:layout_gravity="center"
+                            app:elevation="0dp"
+                            tools:ignore="UnusedAttribute" />
+
+                        <TextView
+                            android:id="@+id/btn_number_21_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:text="G"
+                            android:textSize="@dimen/params_btn_textSize"
+                            android:textStyle="bold"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/btn_number_21_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:text="9"
+                            android:layout_marginTop="18dp" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/frame_22"
+                        android:background="@drawable/ic_circle_custom"
+                        android:backgroundTint="@color/transparent"
+                        android:backgroundTintMode="add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/params_btn_marginHorizontal">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/btn_number_22"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:paddingStart="0dp"
+                            android:paddingEnd="0dp"
+                            android:outlineAmbientShadowColor="@color/white"
+                            android:outlineSpotShadowColor="@color/white"
+                            android:backgroundTint="@color/transparent"
+                            app:backgroundTint="@color/mat_indian_red"
+                            android:gravity="center_horizontal"
+                            android:elevation="0dp"
+                            app:borderWidth="1dp"
+                            android:layout_gravity="center"
+                            app:elevation="0dp"
+                            tools:ignore="UnusedAttribute" />
+
+                        <TextView
+                            android:id="@+id/btn_number_22_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:text="J"
+                            android:textSize="@dimen/params_btn_textSize"
+                            android:textStyle="bold"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/btn_number_22_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:text="9"
+                            android:layout_marginTop="18dp" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/frame_23"
+                        android:background="@drawable/ic_circle_custom"
+                        android:backgroundTint="@color/transparent"
+                        android:backgroundTintMode="add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/params_btn_marginHorizontal">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/btn_number_23"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:paddingStart="0dp"
+                            android:paddingEnd="0dp"
+                            android:outlineAmbientShadowColor="@color/white"
+                            android:outlineSpotShadowColor="@color/white"
+                            android:backgroundTint="@color/transparent"
+                            app:backgroundTint="@color/mat_indian_red"
+                            android:gravity="center_horizontal"
+                            android:elevation="0dp"
+                            app:borderWidth="1dp"
+                            android:layout_gravity="center"
+                            app:elevation="0dp"
+                            tools:ignore="UnusedAttribute" />
+
+                        <TextView
+                            android:id="@+id/btn_number_23_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:text="FF"
+                            android:textSize="@dimen/params_btn_textSize"
+                            android:textStyle="bold"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/btn_number_23_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:text="9"
+                            android:layout_marginTop="18dp" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/frame_24"
+                        android:background="@drawable/ic_circle_custom"
+                        android:backgroundTint="@color/transparent"
+                        android:backgroundTintMode="add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/params_btn_marginHorizontal">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/btn_number_24"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:paddingStart="0dp"
+                            android:paddingEnd="0dp"
+                            android:outlineAmbientShadowColor="@color/white"
+                            android:outlineSpotShadowColor="@color/white"
+                            android:backgroundTint="@color/transparent"
+                            app:backgroundTint="@color/mat_indian_red"
+                            android:gravity="center_horizontal"
+                            android:elevation="0dp"
+                            app:borderWidth="1dp"
+                            android:layout_gravity="center"
+                            app:elevation="0dp"
+                            tools:ignore="UnusedAttribute" />
+
+                        <TextView
+                            android:id="@+id/btn_number_24_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:text="G"
+                            android:textSize="@dimen/params_btn_textSize"
+                            android:textStyle="bold"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/btn_number_24_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:text="9"
+                            android:layout_marginTop="18dp" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/frame_25"
+                        android:background="@drawable/ic_circle_custom"
+                        android:backgroundTint="@color/transparent"
+                        android:backgroundTintMode="add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/params_btn_marginHorizontal">
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/btn_number_25"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:paddingStart="0dp"
+                            android:paddingEnd="0dp"
+                            android:outlineAmbientShadowColor="@color/white"
+                            android:outlineSpotShadowColor="@color/white"
+                            android:backgroundTint="@color/transparent"
+                            app:backgroundTint="@color/mat_indian_red"
+                            android:gravity="center_horizontal"
+                            android:elevation="0dp"
+                            app:borderWidth="1dp"
+                            android:layout_gravity="center"
+                            app:elevation="0dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/btn_number_25_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:text="5"
+                            android:textSize="@dimen/params_btn_textSize"
+                            android:textStyle="bold"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/btn_number_25_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_gravity="center"
+                            android:text="9"
+                            android:layout_marginTop="18dp" />
+                    </FrameLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.otaliastudios.zoom.ZoomLayout>
+
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:alpha="1"
+        android:visibility="gone"
+        android:id="@+id/finished_relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey_transparent"
+        android:gravity="center"
+        android:paddingHorizontal="15dp"
+        android:clickable="true"
+        android:textAlignment="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:background="@color/white"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textView_cheerUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Awesome!"
+                android:textStyle="bold"
+                android:textSize="@dimen/font_size_xl"
+                android:paddingBottom="6dp"/>
+
+            <TextView
+                android:id="@+id/textView_currentLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Level : 3"
+                android:textStyle="normal"
+                android:textSize="@dimen/font_size_normal"
+                android:paddingBottom="6dp"/>
+
+            <TextView
+                android:id="@+id/textView_currentDifficulty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Difficulty : Easy"
+                android:textStyle="normal"
+                android:textSize="@dimen/font_size_normal"
+                android:paddingBottom="6dp"/>
+
+            <TextView
+                android:id="@+id/textView_currentGrid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sudoku Grid : 3 x 3"
+                android:textStyle="normal"
+                android:textSize="@dimen/font_size_normal"
+                android:paddingBottom="6dp"/>
+
+            <TextView
+                android:id="@+id/textView_currentSudokuType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sudoku Type : Standard"
+                android:textStyle="normal"
+                android:textSize="@dimen/font_size_normal"
+                android:paddingBottom="10dp"/>
+
+            <FrameLayout
+                android:layout_gravity="center"
+                android:id="@+id/frame_next_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_frame_background"
+                >
+
+                <Button
+                    android:id="@+id/btn_next_level"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_button_background"
+                    android:text="Next Level"
+                    android:textSize="@dimen/font_size_normal"
+                    android:clickable="true"
+                    android:textColor="@color/blue"/>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:visibility="visible"
+        android:id="@+id/loadingScreen_relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:textAlignment="center"
+                android:layout_centerInParent="true">
+
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/grid_progressbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:indeterminate="false"
+                    android:max="12"
+                    android:progress="0"
+                    android:textAlignment="center">
+
+                </com.google.android.material.progressindicator.CircularProgressIndicator>
+
+                <TextView
+                    android:id="@+id/textView_gridProgress"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="0" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:text="Loading Grid \nPlease Wait"/>
+
+    </LinearLayout>
+
+
+
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

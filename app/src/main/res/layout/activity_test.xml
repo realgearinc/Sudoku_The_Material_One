@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.TestActivity">
+
+    <com.otaliastudios.zoom.ZoomLayout
+        android:id="@+id/sudokuBoard_ZoomLayout"
+        android:layout_width="match_parent"
+        android:layout_height="410dp"
+        app:alignment="center"
+        app:animationDuration="280"
+        app:flingEnabled="true"
+        app:hasClickableChildren="true"
+        app:horizontalPanEnabled="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:maxZoom="5"
+        app:maxZoomType="zoom"
+        app:minZoom="1"
+        app:minZoomType="zoom"
+        app:overPinchable="true"
+        app:overScrollHorizontal="true"
+        app:overScrollVertical="true"
+        app:scrollEnabled="true"
+        app:transformation="centerInside"
+        app:transformationGravity="auto"
+        app:twoFingersScrollEnabled="true"
+        app:zoomEnabled="true">
+
+        <androidx.gridlayout.widget.GridLayout
+            android:id="@+id/sudokuBoard_GridLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/table_grid"
+            app:useDefaultMargins="true">
+
+        </androidx.gridlayout.widget.GridLayout>
+
+    </com.otaliastudios.zoom.ZoomLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

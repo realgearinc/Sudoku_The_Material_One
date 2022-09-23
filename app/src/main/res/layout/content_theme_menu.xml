@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_themeMenu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="2dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_menu"
+        android:layout_width="@dimen/fab_btn_menu_dim"
+        android:layout_height="@dimen/fab_btn_menu_dim"
+        android:layout_alignParentRight="true"
+        android:clickable="true"
+        app:pressedTranslationZ="12dp"
+        app:backgroundTint="@color/white"
+        android:src="@drawable/ic_add"
+        app:fabSize="normal"
+        app:fabCustomSize="@dimen/fab_btn_menu_dim" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_color_1"
+        android:layout_width="@dimen/fab_btn_width"
+        android:layout_height="@dimen/fab_btn_height"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="50dp"
+        android:clickable="true"
+        app:pressedTranslationZ="12dp"
+        app:backgroundTint="@color/white"
+        android:src="@drawable/ic_circle_white"
+        app:tint="@color/mat_steel_blue"
+        app:fabSize="normal"
+        android:visibility="invisible"
+        app:fabCustomSize="@dimen/fab_btn_size" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_color_2"
+        android:layout_width="@dimen/fab_btn_width"
+        android:layout_height="@dimen/fab_btn_height"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="100dp"
+        android:clickable="true"
+        app:pressedTranslationZ="12dp"
+        app:backgroundTint="@color/white"
+        android:src="@drawable/ic_circle_white"
+        app:tint="@color/mat_indian_red"
+        android:visibility="invisible"
+        app:fabCustomSize="@dimen/fab_btn_size" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_color_3"
+        android:layout_width="@dimen/fab_btn_width"
+        android:layout_height="@dimen/fab_btn_height"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="150dp"
+        android:clickable="true"
+        app:pressedTranslationZ="12dp"
+        app:backgroundTint="@color/mat_deep_sky_blue"
+        android:src="@drawable/ic_circle_white"
+        app:tint="@color/white"
+        android:backgroundTintMode="src_over"
+        app:fabSize="normal"
+        android:visibility="invisible"
+        app:fabCustomSize="@dimen/fab_btn_size" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_color_4"
+        android:layout_width="@dimen/fab_btn_width"
+        android:layout_height="@dimen/fab_btn_height"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="200dp"
+        android:clickable="true"
+        app:pressedTranslationZ="12dp"
+        app:backgroundTint="@color/mat_forest_green"
+        android:src="@drawable/ic_circle_white"
+        app:fabSize="normal"
+        app:tint="@color/white"
+        android:visibility="invisible"
+        app:fabCustomSize="@dimen/fab_btn_size" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_color_5"
+        android:layout_width="@dimen/fab_btn_width"
+        android:layout_height="@dimen/fab_btn_height"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="250dp"
+        android:clickable="true"
+        app:pressedTranslationZ="12dp"
+        app:backgroundTint="@color/white"
+        android:src="@drawable/ic_circle_white"
+        app:fabSize="normal"
+        app:tint="@color/mat_slate_grey"
+        android:visibility="invisible"
+        app:fabCustomSize="@dimen/fab_btn_size" />
+
+</RelativeLayout>

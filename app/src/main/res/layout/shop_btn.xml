@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="8dp">
+    <TextView
+        android:id="@+id/textView_product_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remove Ads"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingBottom="8dp">
+
+    </TextView>
+    <TextView
+        android:id="@+id/textView_product_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Get the cleanest experience of the app by removing the ads."
+        android:textSize="16sp"
+        android:paddingBottom="8dp">
+
+    </TextView>
+
+    <Button
+        android:id="@+id/btn_product"
+        android:layout_width="@dimen/btn_main_width"
+        android:layout_height="@dimen/btn_main_height"
+        android:text="Buy for R50"
+        />
+
+</LinearLayout>
